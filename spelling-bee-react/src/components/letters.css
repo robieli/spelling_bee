@@ -1,0 +1,9 @@
+.main {
+  height: 6em;
+  display: flex;
+  text-align: left;
+  padding-left: 1em;
+  font-size: 0.5em;
+  color: #121234;
+  background-color: aliceblue;
+}
