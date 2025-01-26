@@ -1,7 +1,13 @@
 import "./letters.css";
-import React from "react";
+import { useState, React } from "react";
 
 function Letters() {
+  const [answer, setAnswer] = useState("");
+
+  function handleTextAreaChange(e) {
+    setAnswer(e.target.value);
+  }
+
   return (
     <div className="main">
       <label>
@@ -9,7 +15,12 @@ function Letters() {
           Letters of the spelling bee: make sure to capitalize the center
           letter!
         </p>
-        <input name="Letters" />
+        <input
+          name="Letters"
+          onChange={handleTextAreaChange}
+          style={{ marginRight: 10 }}
+        />
+        <button disabled={answer.length === 0}>Submit</button>
       </label>
     </div>
   );

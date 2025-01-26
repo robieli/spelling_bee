@@ -51,7 +51,8 @@ int main()
 
   while (getline(inletters, input))
   {
-    letters.push_back(input[0]);
+
+    letters.push_back((char)toupper(input[0]));
   }
 
   string word;
