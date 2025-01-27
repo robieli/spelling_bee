@@ -3,10 +3,22 @@ import { useState, React } from "react";
 
 function Letters() {
   const [answer, setAnswer] = useState("");
+  const [data, setData] = useState("");
 
   function handleTextAreaChange(e) {
     setAnswer(e.target.value);
   }
+
+  const handleClick = async () => {
+    try {
+      const url = "http://localhost:8000?letters=" + answer;
+      const returned = await (await fetch(url)).json();
+      console.log(typeof returned);
+      setData(returned);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
 
   return (
     <div className="main">
@@ -20,7 +32,9 @@ function Letters() {
           onChange={handleTextAreaChange}
           style={{ marginRight: 10 }}
         />
-        <button disabled={answer.length === 0}>Submit</button>
+        <button onClick={handleClick} disabled={!(answer.length === 7)}>
+          Submit
+        </button>
       </label>
     </div>
   );

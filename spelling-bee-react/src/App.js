@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react";
 import Letters from "./components/letters.js";
+import List from "./components/list.js";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       </div>
       <div className="App-body">
         <Letters />
+        <List />
       </div>
     </div>
   );
