@@ -1,9 +1,8 @@
 import "./letters.css";
 import { useState, React } from "react";
 
-function Letters() {
+function Letters({ setData }) {
   const [answer, setAnswer] = useState("");
-  const [data, setData] = useState("");
 
   function handleTextAreaChange(e) {
     setAnswer(e.target.value);
@@ -13,8 +12,8 @@ function Letters() {
     try {
       const url = "http://localhost:8000?letters=" + answer;
       const returned = await (await fetch(url)).json();
-      console.log(typeof returned);
-      setData(returned);
+      const match = returned.match(/\w+/g);
+      setData(match);
     } catch (err) {
       console.log(err.message);
     }
