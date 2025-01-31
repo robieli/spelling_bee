@@ -1,6 +1,6 @@
 import "./App.css";
-import Letters from "./components/letters.js";
-import List from "./components/list.js";
+import Letters from "./components/Letters.js";
+import List from "./components/List.js";
 import { useState, React } from "react";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       </div>
       <div className="App-body">
         <Letters setData={setData} />
-        <List data={data} columns={5} />
+        <List data={data} />
       </div>
     </div>
   );

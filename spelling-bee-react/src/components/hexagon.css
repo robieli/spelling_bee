@@ -1,0 +1,27 @@
+.hexagon {
+  position: relative;
+  height: 96px;
+}
+
+.letter-input {
+  position: absolute;
+  top: 51%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45px;
+  height: 80px;
+  font-size: 1.8em;
+  text-align: center;
+  text-transform: capitalize;
+  border: none;
+  outline: none;
+  font-family: "Poppins";
+}
+
+.yellow {
+  background: #f7d921;
+}
+
+.white {
+  background: #e7e7e7;
+}
