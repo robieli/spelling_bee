@@ -31,7 +31,7 @@ function Hexagon({ color, letter, value }) {
         class={
           color === "#e7e7e7" ? "letter-input white" : "letter-input yellow"
         }
-      ></input>
+      />
     </div>
   );
 }

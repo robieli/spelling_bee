@@ -11,6 +11,8 @@ function Letters({ setData }) {
   const [letter6, setLetter6] = useState("");
   const [letter7, setLetter7] = useState("");
 
+  const [error, setError] = useState("");
+
   function handleLetter1(e) {
     setLetter1(e.target.value.toUpperCase());
   }
@@ -34,21 +36,34 @@ function Letters({ setData }) {
   }
 
   const handleSubmit = async () => {
-    try {
-      const url =
-        "http://localhost:8000?letters=" +
-        letter1 +
-        letter2 +
-        letter3 +
-        letter4 +
-        letter5 +
-        letter6 +
-        letter7;
-      const returned = await (await fetch(url)).json();
-      const match = returned.match(/\w+/g);
-      setData(match);
-    } catch (err) {
-      console.log(err.message);
+    if (
+      letter1 &&
+      letter2 &&
+      letter3 &&
+      letter4 &&
+      letter5 &&
+      letter6 &&
+      letter7
+    ) {
+      try {
+        const url =
+          "http://localhost:8000?letters=" +
+          letter1 +
+          letter2 +
+          letter3 +
+          letter4 +
+          letter5 +
+          letter6 +
+          letter7;
+        const returned = await (await fetch(url)).json();
+        const match = returned.match(/\w+/g);
+        setData(match);
+        setError("");
+      } catch (err) {
+        console.log(err.message);
+      }
+    } else {
+      setError("Fill in all hexagons before submitting!");
     }
   };
 
@@ -61,6 +76,7 @@ function Letters({ setData }) {
     setLetter6("");
     setLetter7("");
     setData([]);
+    setError("");
   };
 
   const getPosition = (index) => {
@@ -77,7 +93,10 @@ function Letters({ setData }) {
 
   return (
     <div className="main">
-      <p>Input the letters of the spelling bee as they appear in the game!</p>
+      <p style={error ? {} : { paddingBottom: "70px" }}>
+        Input the letters of the spelling bee as they appear in the game!
+      </p>
+      {error ? <p style={{ fontSize: ".7em" }}>{error}</p> : <></>}
       <div class="container">
         {/* Center hexagon */}
         <div class="item-wrapper">
